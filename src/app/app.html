@@ -44,7 +44,7 @@
     <h3>Stored Contacts</h3>
     <ul class="contact-list">
       @for (contact of contacts; track contact.phone; let i = $index) {
-      <li class="contact-item">
+      <li class="contact-item" [ngClass]="{'fibonacci': isFibonacci(i)}">
         <div class="contact-details">
           <span class="contact-name">{{ contact.name }}</span>
 

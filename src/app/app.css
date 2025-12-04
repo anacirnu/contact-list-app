@@ -176,3 +176,8 @@ input[type="text"].ng-invalid.ng-touched {
   background-color: #c53030;
   transform: translateY(-1px);
 }
+
+.contact-item.fibonacci {
+  background-color: #d4edda;
+  border-color: #28a745;
+}
