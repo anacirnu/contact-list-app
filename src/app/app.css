@@ -159,3 +159,20 @@ input[type="text"].ng-invalid.ng-touched {
   border-radius: 8px;
   background-color: #fafafa;
 }
+
+.delete-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #e53e3e;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.delete-button:hover {
+  background-color: #c53030;
+  transform: translateY(-1px);
+}

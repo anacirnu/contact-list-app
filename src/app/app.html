@@ -54,6 +54,7 @@
         </div>
 
         <!-- delete button -->
+        <button type="button" class="delete-button" (click)="deleteContact(contact.phone)">Delete</button>
       </li>
       } @if (contacts.length === 0) {
       <li class="no-contacts">No contacts saved yet.</li>

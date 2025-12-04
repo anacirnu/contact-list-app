@@ -50,5 +50,7 @@ export class App {
     }
   }
 
-  
+  deleteContact(phone: string) {
+    this.contacts = this.contacts.filter(contact => contact.phone !== phone);
+  }
 }
