@@ -1,3 +1,46 @@
 <div class="main-container">
-  
+  <div class="form-panel">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+      <!-- name field -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name" />
+
+        @if (contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty ||
+        contactForm.get('name')?.touched)) {
+        <div class="error-message">
+          @if (contactForm.get('name')?.errors?.['required']) {
+          <span>Name is required.</span>
+          } @if (contactForm.get('name')?.errors?.['minlength']) {
+          <span>Name must be at least 2 characters.</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- phone field -->
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input id="phone" type="text" formControlName="phone" />
+
+        @if (contactForm.get('phone')?.invalid && (contactForm.get('phone')?.dirty ||
+        contactForm.get('phone')?.touched)) {
+        <div class="error-message">
+          @if (contactForm.get('phone')?.errors?.['required']) {
+          <span>Phone number is required.</span>
+          } @if (contactForm.get('phone')?.errors?.['pattern']) {
+          <span>Phone must be 10 digits and numbers only.</span>
+          }
+        </div>
+        }
+      </div>
+
+      <!-- save button -->
+      <button type="submit" [disabled]="contactForm.invalid" class="save-button">Save</button>
+
+    </form>
+  </div>
+
+  <div class="list-panel"></div>
 </div>
