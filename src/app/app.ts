@@ -1,9 +1,8 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common'; 
 import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
 import { Contact } from './contact.interface';
 
 @Component({
@@ -15,6 +14,8 @@ import { Contact } from './contact.interface';
 })
 export class App {
   contacts: Contact[] = [];
+
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   private readonly phonePattern = /^\d{10}$/;
 
@@ -36,10 +37,21 @@ export class App {
       const newContact: Contact = {
         name: this.contactForm.value.name as string,
         phone: this.contactForm.value.phone as string,
-        joke: ""
+        joke: "Loading a joke..."
       };
 
       this.contacts.push(newContact);
+
+      this.http.get<any>('https://api.chucknorris.io/jokes/random').subscribe({
+        next: (res) => {
+          newContact.joke = res.value;
+          this.cdr.detectChanges(); 
+        },
+        error: (err) => {
+          console.error('Failed to fetch joke', err);
+          newContact.joke = 'Failed to load joke.';
+        }
+      });
 
       this.contactForm.reset();
       
