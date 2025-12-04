@@ -1,7 +1,6 @@
 <div class="main-container">
   <div class="form-panel">
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-
       <!-- name field -->
       <div class="form-group">
         <label for="name">Name</label>
@@ -38,9 +37,27 @@
 
       <!-- save button -->
       <button type="submit" [disabled]="contactForm.invalid" class="save-button">Save</button>
-
     </form>
   </div>
 
-  <div class="list-panel"></div>
+  <div class="list-panel">
+    <h3>Stored Contacts</h3>
+    <ul class="contact-list">
+      @for (contact of contacts; track contact.phone; let i = $index) {
+      <li class="contact-item">
+        <div class="contact-details">
+          <span class="contact-name">{{ contact.name }}</span>
+
+          <span class="contact-phone"> - {{ contact.phone }}</span>
+
+          <span class="contact-joke"> - &lt;{{ contact.joke || 'Loading joke...' }}&gt;</span>
+        </div>
+
+        <!-- delete button -->
+      </li>
+      } @if (contacts.length === 0) {
+      <li class="no-contacts">No contacts saved yet.</li>
+      }
+    </ul>
+  </div>
 </div>

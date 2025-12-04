@@ -31,6 +31,24 @@ export class App {
 });
 
   onSubmit() {
-    console.log('Form Submitted!');
+    if (this.contactForm.valid) {
+      
+      const newContact: Contact = {
+        name: this.contactForm.value.name as string,
+        phone: this.contactForm.value.phone as string,
+        joke: ""
+      };
+
+      this.contacts.push(newContact);
+
+      this.contactForm.reset();
+      
+      console.log('Contact saved:', newContact.name);
+      
+    } else {
+      console.error('Form is invalid. Submission prevented by button disabling.');
+    }
   }
+
+  
 }

@@ -104,3 +104,58 @@ input[type="text"].ng-invalid.ng-touched {
   flex: 1 1 60%;
   padding: 20px 0 20px 20px;
 }
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.contact-item:hover {
+  background-color: #f0f7ff;
+  transform: translateY(-1px);
+}
+
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 15px;
+  color: #333;
+}
+
+.contact-name {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.contact-phone {
+  color: #555;
+}
+
+.contact-joke {
+  font-style: italic;
+  color: #888;
+}
+
+.no-contacts {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 20px 0;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
